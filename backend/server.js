@@ -6,8 +6,12 @@
 // config() attaches environment variables to process.env
 require("dotenv").config();
 
+
+const cors = require("cors");
 // Require express that installed via npm
 const express = require("express");
+
+app.use(cors());
 // Require mongoose that installed via npm
 const mongoose = require("mongoose");
 // Require routes
