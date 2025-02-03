@@ -6,18 +6,20 @@
 // config() attaches environment variables to process.env
 require("dotenv").config();
 
-
-const cors = require("cors");
 // Require express that installed via npm
 const express = require("express");
-
 // Require mongoose that installed via npm
 const mongoose = require("mongoose");
 // Require routes
 const workoutRoutes = require("./routes/workouts");
+const userRoutes = require("./routes/user");
 
 // Set up the express app
 const app = express();
+
+//Require cors
+const cors = require("cors");
+//Allow requests from all origins (for development only)
 app.use(cors());
 
 // Middleware:
@@ -37,6 +39,7 @@ app.use((req, res, next) => {
 // Routes
 // workoutRoutes is triggered when we make a request to /api/workouts
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes);
 
 // Connect to DB
 mongoose
